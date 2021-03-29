@@ -5,13 +5,11 @@
     xmlns:tnt="sap.tnt"
     id="fragmentList"
     > 
-
-        <SearchField
-        width="100%"
-        liveChange="onSearch"
-        placeholder="{i18n>SearchPlaceholder}"
-        />
-
+    <SearchField
+    width="100%"
+    liveChange="onSearch"
+    placeholder="{i18n>SearchPlaceholder}"
+    />
     <List items="{ProductsModel>/value}" id="productsList" mode="SingleSelectMaster" selectionChange="onSelectionChange">
         <items>
             <ObjectListItem title="{ProductsModel>ProductName}" type="Active" press="onSelectionChange" 

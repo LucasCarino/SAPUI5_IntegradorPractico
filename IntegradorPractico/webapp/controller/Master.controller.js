@@ -1,16 +1,13 @@
 sap.ui.define([
-        "sap/ui/core/mvc/Controller",
-        "sap/ui/model/json/JSONModel",
-        "sap/ui/core/Fragment",
-        "IntegradorPractico/IntegradorPractico/util/Constants",
-        "IntegradorPractico/IntegradorPractico/util/Services",
-        "IntegradorPractico/IntegradorPractico/util/Formatter",
-        "sap/ui/model/Filter",
-        "sap/ui/model/FilterOperator",
+    "sap/ui/core/mvc/Controller",
+    "sap/ui/model/json/JSONModel",
+    "sap/ui/core/Fragment",
+    "IntegradorPractico/IntegradorPractico/util/Constants",
+    "IntegradorPractico/IntegradorPractico/util/Services",
+    "IntegradorPractico/IntegradorPractico/util/Formatter",
+    "sap/ui/model/Filter",
+    "sap/ui/model/FilterOperator",
 	],
-	/**
-     * @param {typeof sap.ui.core.mvc.Controller} Controller
-     */
 	function (Controller, JSONModel, Fragment, Constants, Services, Formatter, Filter, FilterOperator) {
 		"use strict";
 		return Controller.extend("IntegradorPractico.IntegradorPractico.controller.Master", {

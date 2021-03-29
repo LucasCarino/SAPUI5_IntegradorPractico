@@ -1,11 +1,13 @@
-<core:FragmentDefinition xmlns:simple="sap.gantt.simple"
+<core:FragmentDefinition 
     xmlns="sap.m"
     xmlns:l="sap.ui.layout"
 	xmlns:f="sap.ui.layout.form"
-    xmlns:core="sap.ui.core">
-    <Dialog id="EditDialog"
-    title="Editando producto"
-    >   
+    xmlns:core="sap.ui.core"
+    >
+    <Dialog 
+        id="EditDialog"
+        title="Editando producto"
+        >   
        	<f:SimpleForm>
 			<f:content>
 				<Label text="{i18n>ProductName}" />
@@ -18,7 +20,6 @@
 				<Input value="{CategoryModel>/Description}"/>
 			</f:content>
 		</f:SimpleForm>
-
         <Button type="Accept" text="guardar" width="50%" press="closeDialog" />
         <Button text="cancelar" width="50%" press="closeDialog"/>
     </Dialog>

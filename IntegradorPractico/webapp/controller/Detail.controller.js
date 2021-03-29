@@ -7,7 +7,7 @@ sap.ui.define([
     "sap/ui/core/Fragment",
     "sap/m/MessageBox",
     "sap/m/MessageToast"
-],
+    ],
     function (Controller, JSONModel, Services, Constants, Formatter, Fragment, MessageBox, MessageToast) {
         "use strict";
         return Controller.extend("IntegradorPractico.IntegradorPractico.controller.Detail", {
