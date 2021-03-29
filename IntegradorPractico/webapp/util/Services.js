@@ -3,9 +3,6 @@ sap.ui.define([
 ],
 function (Constants) {
     "use strict"; return { 
-        getLocalJSON: function (sJsonName) {
-            return this.promisizer(jQuery.sap.getModulePath("?"));
-        },
         getProducts: function () {
             let oRequest = this.getRequest({
                 endPoint: Constants.REQUEST.endPoint.northwind,
@@ -49,15 +46,6 @@ function (Constants) {
                 }, reject);
             });
         },
-        /**
-        * Gets an object with jQuery.ajax compatible properties
-        * @param {Object} oOptions Mapped hash of URL info properties
-        * @param {string} oOptions.endPoint Connection endpoint (SCP)
-        * @param {string} oOptions.method Request method, e.g GET
-        * @param {Boolean} oOptions.fetch Request flag for fetching a CSRF token
-        * @param {string} oOptions.params URL Like string parameters
-        * @param {string} oOptions.data Request data
-        */
         getRequest: function (oOptions = {}) {
         const oHeaders = {
         'Content-Type': "application/json;charset=UTF-8;IEEE754Compatible=true",

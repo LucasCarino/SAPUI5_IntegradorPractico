@@ -7,13 +7,13 @@ xmlns:f="sap.ui.layout.form">
     	<ObjectHeader
             title="{SelectedProductModel>/ProductName}"
             number="{path: 'SelectedProductModel>/UnitPrice', formatter: '.Formatter.formatPrice'}"
-            icon="{CategoryModel>/Picture}"
             >
             <statuses>
                 <ObjectStatus
                     text="{path: 'SelectedProductModel>/UnitsInStock', formatter: '.Formatter.formatStock'}"
                     state="{path: 'SelectedProductModel>/UnitsInStock', formatter: '.Formatter.formatState'}" />
             </statuses>
+                <ObjectAttribute text="{CategoryModel>/CategoryName}" />
         </ObjectHeader>
         <IconTabBar
             class="sapUiResponsiveContentPadding">
