@@ -1,0 +1,56 @@
+_schema-version: "3.2"
+ID: IntegradorPractico
+version: 0.0.1
+modules:
+- name: integradorpractico-approuter
+  type: approuter.nodejs
+  path: integradorpractico-approuter
+  requires:
+  - name: IntegradorPractico_html_repo_runtime
+  - name: dest_IntegradorPractico
+  parameters:
+    disk-quota: 256M
+    memory: 256M
+- name: IntegradorPractico_ui_deployer
+  type: com.sap.application.content
+  path: .
+  requires:
+  - name: IntegradorPractico_html_repo_host
+    parameters:
+      content-target: true
+  build-parameters:
+    build-result: resources
+    requires:
+    - artifacts:
+      - IntegradorPractico-content.zip
+      name: IntegradorPractico
+      target-path: resources/
+- name: IntegradorPractico
+  type: html5
+  path: IntegradorPractico
+  build-parameters:
+    builder: custom
+    commands:
+    - npm run build
+    supported-platforms: []
+resources:
+- name: IntegradorPractico_html_repo_runtime
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-plan: app-runtime
+- name: IntegradorPractico_html_repo_host
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-plan: app-host
+- name: dest_IntegradorPractico
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: destination
+    service-plan: lite
+build-parameters:
+  before-all:
+  - builder: custom
+    commands:
+    - npm install

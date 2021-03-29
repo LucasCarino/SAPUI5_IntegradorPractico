@@ -1,0 +1,9 @@
+<mvc:View controllerName="IntegradorPractico.IntegradorPractico.controller.Master"
+xmlns:mvc="sap.ui.core.mvc"
+xmlns:tnt="sap.tnt"
+xmlns:core="sap.ui.core"
+displayBlock="true" xmlns="sap.m">
+    <Page id="page" title="{i18n>Products} ({CountModel>/value})">
+        <core:Fragment id="fragmentList" fragmentName="IntegradorPractico.IntegradorPractico.fragments.ProductList" type="XML" />
+    </Page>
+</mvc:View>

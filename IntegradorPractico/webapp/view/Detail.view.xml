@@ -1,0 +1,60 @@
+<mvc:View controllerName="IntegradorPractico.IntegradorPractico.controller.Detail" 
+xmlns:mvc="sap.ui.core.mvc" 
+displayBlock="true" 
+xmlns="sap.m"
+xmlns:f="sap.ui.layout.form">
+    <Page title="{SelectedProductModel>/ProductName}">
+    	<ObjectHeader
+            title="{SelectedProductModel>/ProductName}"
+            number="{path: 'SelectedProductModel>/UnitPrice', formatter: '.Formatter.formatPrice'}"
+            icon="{CategoryModel>/Picture}"
+            >
+            <statuses>
+                <ObjectStatus
+                    text="{path: 'SelectedProductModel>/UnitsInStock', formatter: '.Formatter.formatStock'}"
+                    state="{path: 'SelectedProductModel>/UnitsInStock', formatter: '.Formatter.formatState'}" />
+            </statuses>
+        </ObjectHeader>
+        <IconTabBar
+            class="sapUiResponsiveContentPadding">
+            <items>
+                <IconTabFilter text="{i18n>IconTabTitle}">
+                    <f:SimpleForm>
+                        <f:content>
+                            <Label text="{i18n>Product}" />
+                            <Text text="{SelectedProductModel>/ProductName}" />
+                            <Label text="{i18n>Description}" />
+                            <Text text="{CategoryModel>/Description}" />
+                        </f:content>
+                    </f:SimpleForm>
+                </IconTabFilter>
+                <IconTabFilter text="{i18n>Supplier}">
+                        <f:SimpleForm>
+                        <f:content>
+                            <Label text="{i18n>Supplier}" />
+                            <Text text="{SupplierModel>/CompanyName}" />
+                            <Label text="{i18n>ContactName}" />
+                            <Text text="{SupplierModel>/ContactName}" />
+                            <Label text="{i18n>Address}" />
+                            <Text text="{SupplierModel>/Address}" />
+                            <Label text="{i18n>City}" />
+                            <Text text="{SupplierModel>/City}" />
+                            <Label text="{i18n>Country}" />
+                            <Text text="{SupplierModel>/Country}" />
+                            <Label text="{i18n>Phone}" />
+                            <Text text="{SupplierModel>/Phone}" />
+                        </f:content>
+                    </f:SimpleForm>
+                </IconTabFilter>
+            </items>
+        </IconTabBar>
+	    <footer>
+			<OverflowToolbar>
+				<ToolbarSpacer/>
+				<Button text="{i18n>EditButton}" type="Accept" press="onEdit" />
+				<Button text="{i18n>DeleteButton}" press="onDelete" />
+				<Button text="{i18n>CopyButton}" press="onCopy" />
+			</OverflowToolbar>
+		</footer>
+	</Page>
+</mvc:View>

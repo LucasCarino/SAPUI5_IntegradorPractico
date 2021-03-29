@@ -1,0 +1,29 @@
+<core:FragmentDefinition
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:tnt="sap.tnt"
+    id="fragmentList"
+    > 
+    <tnt:ToolHeader >
+        <SearchField
+        width="100%"
+        liveChange="onSearch"
+        placeholder="{i18n>SearchPlaceholder}"
+        />
+    </tnt:ToolHeader>
+    <List items="{ProductsModel>/value}" id="productsList" mode="SingleSelectMaster" selectionChange="onSelectionChange">
+        <items>
+            <ObjectListItem title="{ProductsModel>ProductName}" type="Active" press="onSelectionChange" 
+                number="{
+                parts: [{path: 'ProductsModel>UnitPrice'}, {path: 'PriceModel>/currency'}],
+                type: 'sap.ui.model.type.Currency',
+                formatOptions: {
+                showMeasure: false
+                    }
+                }"
+                numberUnit="{PriceModel>/currency}" 
+                />
+        </items>
+    </List>
+</core:FragmentDefinition>
