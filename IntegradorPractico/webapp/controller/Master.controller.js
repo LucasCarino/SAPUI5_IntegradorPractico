@@ -118,8 +118,8 @@ sap.ui.define([
                 if (sDialogFramentName === Constants.FRAGMENTS.routes.filterDialog) {
                     var oModelJSON = this.getOwnerComponent().getModel(Constants.MODELS.products);
                     var modelOriginal = oModelJSON.getProperty("/value");
-                    var jsonProduct = JSON.parse(JSON.stringify(modelOriginal, ["ProductName"]));
-                    var jsonPrice = JSON.parse(JSON.stringify(modelOriginal, ["UnitPrice"]));
+                    var jsonProduct = JSON.parse(JSON.stringify(modelOriginal, [Constants.PROPERTIES.productsModel.productName]));
+                    var jsonPrice = JSON.parse(JSON.stringify(modelOriginal, [Constants.PROPERTIES.productsModel.unitPrice]));
                     oDialog.setModel(oModelJSON);
                     jsonProduct = jsonProduct.filter(function (currentObject) {
                         if (currentObject.ProductName in jsonProduct) {
@@ -134,7 +134,7 @@ sap.ui.define([
                         productFilter.push(
                             new sap.m.ViewSettingsItem({
                                 text: jsonProduct[i].ProductName,
-                                key: "ProductName"
+                                key: Constants.KEYS.productName
                             })
                         );
                     }
@@ -154,18 +154,18 @@ sap.ui.define([
                         priceFilter.push(
                             new sap.m.ViewSettingsItem({
                                 text: jsonPrice[i],
-                                key: "UnitPrice"
+                                key: Constants.KEYS.unitPrice
                             })
                         )
                     }
                     oDialog.destroyFilterItems();
                     oDialog.addFilterItem(new sap.m.ViewSettingsFilterItem({
-                        key: 'ProductName',
+                        key: Constants.KEYS.productName,
                         text: oBundle.getText('Product'),
                         items: productFilter
                     }));
                     oDialog.addFilterItem(new sap.m.ViewSettingsFilterItem({
-                        key: 'UnitPrice',
+                        key: Constants.KEYS.unitPrice,
                         text: oBundle.getText('Price'),
                         items: priceFilter
                     }))

@@ -46,6 +46,16 @@ sap.ui.define([
         ACTIONS: {
             ok: "OK",
             cancel: "Cancelar"
+        },
+        KEYS: {
+            productName: "ProductName",
+            unitPrice: "UnitPrice"
+        },
+        PROPERTIES: {
+            productsModel: {
+                productName: "ProductName",
+                unitPrice: "UnitPrice"                
+            }
         }
     };
 }, true);
