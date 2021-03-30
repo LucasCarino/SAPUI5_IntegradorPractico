@@ -5,12 +5,19 @@
     xmlns:tnt="sap.tnt"
     id="fragmentList"
     > 
-    <SearchField
-    width="100%"
-    liveChange="onSearch"
-    placeholder="{i18n>SearchPlaceholder}"
-    />
     <List items="{ProductsModel>/value}" id="productsList" mode="SingleSelectMaster" selectionChange="onSelectionChange">
+        <headerToolbar>
+            <OverflowToolbar >
+                <SearchField
+                    liveChange="onSearch"
+                    placeholder="{i18n>SearchPlaceholder}"
+                    width="70%"
+                    />
+                    <ToolbarSpacer />
+                    <Button tooltip="{i18n>SortTitle}" icon="sap-icon://sort" press="onSort" />
+                    <Button tooltip="{i18n>FilterTitle}" icon="sap-icon://filter" press="onFilter" />
+            </OverflowToolbar>
+        </headerToolbar>
         <items>
             <ObjectListItem title="{ProductsModel>ProductName}" type="Active" press="onSelectionChange" 
                 number="{

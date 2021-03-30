@@ -35,7 +35,9 @@ sap.ui.define([
                 productsList: "productsList"
             },
             routes: {
-                editDialog: "IntegradorPractico.IntegradorPractico.fragments.EditDialog"
+                editDialog: "IntegradorPractico.IntegradorPractico.fragments.EditDialog",
+                sortDialog: "IntegradorPractico.IntegradorPractico.fragments.SortDialog",
+                filterDialog: "IntegradorPractico.IntegradorPractico.fragments.FilterDialog"
             }
         },
         FILTERS: {

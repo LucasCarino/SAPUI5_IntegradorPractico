@@ -1,0 +1,13 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <ViewSettingsDialog id="FilterDialog"
+    title="{i18n>FilterTitle}"
+    confirm="onFilterDialogConfirm"
+    >   
+        <filterItems>
+            <ViewSettingsFilterItem id="idViewSet">
+            </ViewSettingsFilterItem>
+        </filterItems>
+    </ViewSettingsDialog>
+</core:FragmentDefinition>
