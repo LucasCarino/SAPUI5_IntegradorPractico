@@ -200,10 +200,19 @@ sap.ui.define([
                 });
                 oBinding.filter(aFilters)
                 let oProductsCount = this.getView().getModel(Constants.MODELS.count);
-                let length = {
-                    value: aFilters.length
-                };
-                oProductsCount.setData(length);
+                if (aFilters.length != []) {
+                    let oLength = {
+                        value: aFilters.length
+                    };
+                    oProductsCount.setData(oLength);
+                } else {
+                    var oProductsModel = this.getView().getModel(Constants.MODELS.products);
+                    let oData = oProductsModel.getData();
+                    var oLength = {
+                        value: oData.value.length
+                    }
+                    oProductsCount.setData(oLength);
+                }
             }
         });
     });
