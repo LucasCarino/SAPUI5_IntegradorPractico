@@ -114,61 +114,61 @@ sap.ui.define([
                     if (Device.system.desktop) {
                         oDialog.addStyleClass("sapUISizeCompact");
                     }
-                }
-                if (sDialogFramentName === Constants.FRAGMENTS.routes.filterDialog) {
-                    var oModelJSON = this.getOwnerComponent().getModel(Constants.MODELS.products);
-                    var modelOriginal = oModelJSON.getProperty("/value");
-                    var jsonProduct = JSON.parse(JSON.stringify(modelOriginal, [Constants.PROPERTIES.productsModel.productName]));
-                    var jsonPrice = JSON.parse(JSON.stringify(modelOriginal, [Constants.PROPERTIES.productsModel.unitPrice]));
-                    oDialog.setModel(oModelJSON);
-                    jsonProduct = jsonProduct.filter(function (currentObject) {
-                        if (currentObject.ProductName in jsonProduct) {
-                            return false;
-                        } else {
-                            jsonProduct[currentObject.ProductName] = true;
-                            return true
+                    if (sDialogFramentName === Constants.FRAGMENTS.routes.filterDialog) {
+                        var oModelJSON = this.getOwnerComponent().getModel(Constants.MODELS.products);
+                        var modelOriginal = oModelJSON.getProperty("/value");
+                        var jsonProduct = JSON.parse(JSON.stringify(modelOriginal, [Constants.PROPERTIES.productsModel.productName]));
+                        var jsonPrice = JSON.parse(JSON.stringify(modelOriginal, [Constants.PROPERTIES.productsModel.unitPrice]));
+                        oDialog.setModel(oModelJSON);
+                        jsonProduct = jsonProduct.filter(function (currentObject) {
+                            if (currentObject.ProductName in jsonProduct) {
+                                return false;
+                            } else {
+                                jsonProduct[currentObject.ProductName] = true;
+                                return true
+                            }
+                        });
+                        var productFilter = [];
+                        for (var i = 0; i < jsonProduct.length; i++) {
+                            productFilter.push(
+                                new sap.m.ViewSettingsItem({
+                                    text: jsonProduct[i].ProductName,
+                                    key: Constants.KEYS.productName
+                                })
+                            );
                         }
-                    });
-                    var productFilter = [];
-                    for (var i = 0; i < jsonProduct.length; i++) {
-                        productFilter.push(
-                            new sap.m.ViewSettingsItem({
-                                text: jsonProduct[i].ProductName,
-                                key: Constants.KEYS.productName
-                            })
-                        );
-                    }
-                    jsonPrice = jsonPrice.filter(function (currentObject) {
-                        if (currentObject.UnitPrice?.jsonPrice) {
-                            return false;
-                        } else {
-                            jsonPrice[currentObject.UnitPrice] = true;
-                            return true
+                        jsonPrice = jsonPrice.filter(function (currentObject) {
+                            if (currentObject.UnitPrice?.jsonPrice) {
+                                return false;
+                            } else {
+                                jsonPrice[currentObject.UnitPrice] = true;
+                                return true
+                            }
+                        });
+                        var priceFilter = [];
+                        jsonPrice = jsonPrice.map(sPrice => {
+                            return parseFloat(sPrice.UnitPrice)
+                        })
+                        for (var i = 0; i < jsonPrice.length; i++) {
+                            priceFilter.push(
+                                new sap.m.ViewSettingsItem({
+                                    text: jsonPrice[i],
+                                    key: Constants.KEYS.unitPrice
+                                })
+                            )
                         }
-                    });
-                    var priceFilter = [];
-                    jsonPrice = jsonPrice.map(sPrice => {
-                        return parseFloat(sPrice.UnitPrice)
-                    })
-                    for (var i = 0; i < jsonPrice.length; i++) {
-                        priceFilter.push(
-                            new sap.m.ViewSettingsItem({
-                                text: jsonPrice[i],
-                                key: Constants.KEYS.unitPrice
-                            })
-                        )
+                        oDialog.destroyFilterItems();
+                        oDialog.addFilterItem(new sap.m.ViewSettingsFilterItem({
+                            key: Constants.KEYS.productName,
+                            text: oBundle.getText('Product'),
+                            items: productFilter
+                        }));
+                        oDialog.addFilterItem(new sap.m.ViewSettingsFilterItem({
+                            key: Constants.KEYS.unitPrice,
+                            text: oBundle.getText('Price'),
+                            items: priceFilter
+                        }))
                     }
-                    oDialog.destroyFilterItems();
-                    oDialog.addFilterItem(new sap.m.ViewSettingsFilterItem({
-                        key: Constants.KEYS.productName,
-                        text: oBundle.getText('Product'),
-                        items: productFilter
-                    }));
-                    oDialog.addFilterItem(new sap.m.ViewSettingsFilterItem({
-                        key: Constants.KEYS.unitPrice,
-                        text: oBundle.getText('Price'),
-                        items: priceFilter
-                    }))
                 }
                 return oDialog;
             },
